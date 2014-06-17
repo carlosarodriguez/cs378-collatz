@@ -53,8 +53,8 @@ int collatz_eval (int i, int j) {
         if (count > max_length)
             max_length = count;
     }
-    assert(max_length > 0)
-;    return max_length;}
+    assert(max_length > 0);
+    return max_length;}
 
 // -------------
 // collatz_print

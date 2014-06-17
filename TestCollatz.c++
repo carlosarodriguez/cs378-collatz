@@ -53,19 +53,19 @@ To obtain coverage of the test:
 // ----
 
 TEST(Collatz, read_1) {
-    std::istringstream r("1 10\n");
+    std::istringstream r("1 10\n100 200\n201 210\n900 1000\n");
     const std::pair<int, int> p = collatz_read(r);
     ASSERT_EQ( 1, p.first);
     ASSERT_EQ(10, p.second);}
 
 TEST(Collatz, read_2) {
-    std::istringstream r("2 20\n");
+    std::istringstream r("20 2\n");
     const std::pair<int, int> p = collatz_read(r);
     ASSERT_EQ( 2, p.first);
     ASSERT_EQ(20, p.second);}
 
 TEST(Collatz, read_3) {
-    std::istringstream r("11 17\n");
+    std::istringstream r("11 17\n9 3\n");
     const std::pair<int, int> p = collatz_read(r);
     ASSERT_EQ(11, p.first);
     ASSERT_EQ(17, p.second);}
@@ -87,7 +87,7 @@ TEST(Collatz, eval_3) {
     ASSERT_EQ(89, v);}
 
 TEST(Collatz, eval_4) {
-    const int v = collatz_eval(900, 1000);
+    const int v = collatz_eval(1000, 900);
     ASSERT_EQ(174, v);}
 
 // -----
@@ -101,13 +101,13 @@ TEST(Collatz, print_1) {
 
 TEST(Collatz, print_2) {
     std::ostringstream w;
-    collatz_print(w,  1,  2,  2);
-    ASSERT_EQ("1 2 2\n", w.str());}
+    collatz_print(w,  1,  9, 93);
+    ASSERT_EQ("1 9 93\n", w.str());}
 
 TEST(Collatz, print_3) {
     std::ostringstream w;
-    collatz_print(w,200,203, 40);
-    ASSERT_EQ("200 203 40\n", w.str());}
+    collatz_print(w, 20,  2, 13);
+    ASSERT_EQ("20 2 13\n", w.str());}
 
 // -----
 // solve
@@ -120,10 +120,10 @@ TEST(Collatz, solve_1) {
     ASSERT_EQ("1 10 20\n100 200 125\n201 210 89\n900 1000 174\n", w.str());}
 
 TEST(Collatz, solve_2) {
-    std::istringstream r("900 1000\n");
+    std::istringstream r("1000 900\n");
     std::ostringstream w;
     collatz_solve(r, w);
-    ASSERT_EQ("900 1000 174\n", w.str());}
+    ASSERT_EQ("1000 900 174\n", w.str());}
 
 TEST(Collatz, solve_3) {
     std::istringstream r("200 203\n1 10\n");
