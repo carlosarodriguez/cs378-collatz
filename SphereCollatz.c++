@@ -29,6 +29,8 @@ std::pair<int, int> collatz_read (std::istream& r) {
 // collatz_eval
 // ------------
 
+int ccache [1000000] = { 0 }; //zero-initialized cache
+
 int collatz_eval (int i, int j) {
     assert(i > 0);
     assert(j > 0);
@@ -39,21 +41,47 @@ int collatz_eval (int i, int j) {
         j = temp;
     }
 
+    /*ORIGINAL CACHE-LESS SOLUTION*/
+    // int max_length = 0;
+    // int count = 1;
+    // for (int n = i; n <= j; n++) {
+    //     count = 1;
+    //     for (int t = n; t > 1; count++) {
+    //         if (t % 2 == 0)
+    //             t /= 2;
+    //         else
+    //             t = (3 * t) + 1; 
+    //     }
+    //     if (count > max_length)
+    //         max_length = count;
+    // }
+
+    //creating cache algorithm
+    int count = 0;
     int max_length = 0;
-    int count = 1;
-    for (int n = i; n <= j; n++) {
-        count = 1;
-        for (int t = n; t > 1; count++) {
-            if (t % 2 == 0)
-                t /= 2;
-            else
-                t = (3 * t) + 1; 
-        }
+    for (int val = i; val <= j; val++) {
+        count = rcl(val);
         if (count > max_length)
             max_length = count;
     }
+    
     assert(max_length > 0);
     return max_length;}
+
+// ----------------------
+// recursive cycle length
+// ----------------------
+
+int rcl (int val) {
+    if (ccache[val] == 0) {
+        if (val % 2 == 0)           //even
+            ccache[val] = (1 + rcl(val/2));
+        else {                      //odd
+            ccache[val] = (1 + rcl((3 * val) + 1));
+        }
+    }
+    return ccache[val];
+}
 
 // -------------
 // collatz_print
