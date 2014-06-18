@@ -36,6 +36,8 @@ std::pair<int, int> collatz_read (std::istream&);
  */
 int collatz_eval (int, int);
 
+int rcl (int);
+
 // -------------
 // collatz_print
 // -------------

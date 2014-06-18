@@ -29,7 +29,7 @@ std::pair<int, int> collatz_read (std::istream& r) {
 // collatz_eval
 // ------------
 
-int ccache [1000000] = { 0 }; //zero-initialized cache
+int cache [1000000] = { 0 };
 
 int collatz_eval (int i, int j) {
     assert(i > 0);
@@ -40,47 +40,44 @@ int collatz_eval (int i, int j) {
         i = j;
         j = temp;
     }
+    
+    cache[0] = 0;
+    cache[1] = 1;
 
-    /*ORIGINAL CACHE-LESS SOLUTION*/
-    // int max_length = 0;
-    // int count = 1;
-    // for (int n = i; n <= j; n++) {
-    //     count = 1;
-    //     for (int t = n; t > 1; count++) {
-    //         if (t % 2 == 0)
-    //             t /= 2;
-    //         else
-    //             t = (3 * t) + 1; 
-    //     }
-    //     if (count > max_length)
-    //         max_length = count;
-    // }
+    long max = 0;
+    long count = 0;
+    for (long t = i; t <= j; t++) {
+        count = 0;
+        if (cache[t] != 0)
+            count = cache[t];
 
-    //creating cache algorithm
-    int count = 0;
-    int max_length = 0;
-    for (int val = i; val <= j; val++) {
-        count = rcl(val);
-        if (count > max_length)
-            max_length = count;
+        else {  //t is not in the cache
+            long t2 = t;
+            while (t > 1) {
+                if (t % 2 == 0) {
+                    t /= 2;
+                    count++;
+                }
+                else {
+                    t = t + (t >> 1) + 1;
+                    count += 2;
+                }
+
+                if (t < 1000000 && cache[t] != 0) {
+                    count += cache[t];
+                    break;
+                }
+            }
+            t = t2;
+            cache[t] = count;
+        }
+
+        if (count > max)
+            max = count;
     }
     
-    assert(max_length > 0);
-    return max_length;}
-
-// ----------------------
-// recursive cycle length
-// ----------------------
-
-int rcl (int val) {
-    if (ccache[val] == 0) {
-        if (val % 2 == 0)           //even
-            ccache[val] = (1 + rcl(val/2));
-        else {                      //odd
-            ccache[val] = (1 + rcl((3 * val) + 1));
-        }
-    }
-    return ccache[val];
+    assert(max > 0);
+    return max;
 }
 
 // -------------
