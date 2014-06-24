@@ -1,0 +1,140 @@
+        -:    0:Source:Collatz.c++
+        -:    0:Programs:2
+        -:    1:// ----------------------------
+        -:    2:// projects/collatz/Collatz.c++
+        -:    3:// Copyright (C) 2014
+        -:    4:// Glenn P. Downing
+        -:    5:// ----------------------------
+        -:    6:
+        -:    7:// --------
+        -:    8:// includes
+        -:    9:// --------
+        -:   10:
+        -:   11:#include <cassert>  // assert
+        -:   12:#include <iostream> // endl, istream, ostream
+        -:   13:#include <utility>  // make_pair, pair
+        -:   14:
+        -:   15:#include "Collatz.h"
+        -:   16:
+        -:   17:// ------------
+        -:   18:// collatz_read
+        -:   19:// ------------
+        -:   20:
+function _Z12collatz_readRSi called 13 returned 100% blocks executed 90%
+       13:   21:std::pair<int, int> collatz_read (std::istream& r) {
+        -:   22:    int i;
+       13:   23:    r >> i;
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0% (throw)
+call    2 returned 100%
+       13:   24:    if (!r)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0% (throw)
+call    2 returned 100%
+branch  3 taken 23% (fallthrough)
+branch  4 taken 77%
+        3:   25:        return std::make_pair(0, 0);
+call    0 returned 100%
+        -:   26:    int j;
+       10:   27:    r >> j;
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0% (throw)
+call    2 returned 100%
+       10:   28:    return std::make_pair(i, j);}
+call    0 returned 100%
+call    1 never executed
+        -:   29:
+        -:   30:// ------------
+        -:   31:// collatz_eval
+        -:   32:// ------------
+        -:   33:
+function _Z12collatz_evalii called 11 returned 100% blocks executed 81%
+       11:   34:int collatz_eval (int i, int j) {
+       11:   35:    assert(i > 0);
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+call    2 never executed
+       11:   36:    assert(j > 0);
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+call    2 never executed
+        -:   37:
+       11:   38:    if (j < i) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   39:        int temp = i;
+    #####:   40:        i = j;
+    #####:   41:        j = temp;
+        -:   42:    }
+        -:   43:
+       11:   44:    int max_length = 0;
+      570:   45:    for (int n = i; n <= j; n++) {
+branch  0 taken 98%
+branch  1 taken 2% (fallthrough)
+      559:   46:        int count = 1;
+    32645:   47:        for (int t = n; t > 1; count++) {
+branch  0 taken 98%
+branch  1 taken 2% (fallthrough)
+    32086:   48:            if (t % 2 == 0)
+branch  0 taken 67% (fallthrough)
+branch  1 taken 33%
+    21537:   49:                t /= 2;
+        -:   50:            else
+    10549:   51:                t = (3 * t) + 1; 
+        -:   52:        }
+      559:   53:        if (count > max_length)
+branch  0 taken 9% (fallthrough)
+branch  1 taken 91%
+       52:   54:            max_length = count;
+        -:   55:    }
+    #####:   56:    assert(max_length > 0)
+call    0 never executed
+       22:   57:;    return max_length;}
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+        -:   58:
+        -:   59:// -------------
+        -:   60:// collatz_print
+        -:   61:// -------------
+        -:   62:
+function _Z13collatz_printRSoiii called 10 returned 100% blocks executed 100%
+       10:   63:void collatz_print (std::ostream& w, int i, int j, int v) {
+       10:   64:    w << i << " " << j << " " << v << std::endl;}
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+        -:   65:
+        -:   66:// -------------
+        -:   67:// collatz_solve
+        -:   68:// -------------
+        -:   69:
+function _Z13collatz_solveRSiRSo called 3 returned 100% blocks executed 90%
+       10:   70:void collatz_solve (std::istream& r, std::ostream& w) {
+        7:   71:    while (true) {
+       10:   72:        const std::pair<int, int> p = collatz_read(r);
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0% (throw)
+call    2 returned 100%
+       10:   73:        if (p == std::make_pair(0, 0))
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 70% (fallthrough)
+branch  3 taken 30%
+        3:   74:            return;
+call    0 never executed
+        7:   75:        const int v = collatz_eval(p.first, p.second);
+call    0 returned 100%
+function _GLOBAL__sub_I__Z12collatz_readRSi called 1 returned 100% blocks executed 100%
+function _Z41__static_initialization_and_destruction_0ii called 1 returned 100% blocks executed 100%
+       10:   76:        collatz_print(w, p.first, p.second, v);}}
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0%
+branch  3 taken 100% (fallthrough)
+branch  4 taken 0%
+branch  5 taken 100% (fallthrough)
+branch  6 taken 0% (throw)
+call    7 returned 100%

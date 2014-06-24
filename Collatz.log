@@ -1,0 +1,91 @@
+commit 5379119a1fa1eb939b398b6ad02625d04a0beb51
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Tue Jun 17 21:02:02 2014 -0500
+
+    Redid the html/ directory using doxygen
+
+commit c5955c3d14c042f429c922580763734e845f6711
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Tue Jun 17 20:08:26 2014 -0500
+
+    Ran Doxygen to create the html/ directory
+
+commit 35b2c589f92b436fecf2538e5469e7e172bb2daa
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Tue Jun 17 19:51:20 2014 -0500
+
+    FINALLY got the cache version of SphereCollatz.c++ accepted
+
+commit ef303c5645801f4d49869da81f1c85f4ae5fb3f1
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Tue Jun 17 13:13:19 2014 -0500
+
+    Updated the unit tests in TestCollatz.c++ to improve unit test coverage
+
+commit 2e83945e2d51cc916f0d4d43bd679790e8249780
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Tue Jun 17 10:20:08 2014 -0500
+
+    Modified SphereCollatz.c++ to include a cache, added RunCollatz.out and TestCollatz.out
+
+commit 7e3ddbe44764d5d75bee9e08db26d5a8daefc3b5
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Tue Jun 17 10:19:01 2014 -0500
+
+    Modified SphereCollatz.c++ to include a cache
+
+commit bdd2a2c9f19beb01a536f8e43768c9d06a3d72cb
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Sun Jun 15 23:19:43 2014 -0500
+
+    Created RunCollatz.out from RunCollatz.in, using the algorithm submitted to Sphere
+
+commit 58403d1d97d6990028e1702e53dec113f4d0e042
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Sun Jun 15 22:18:34 2014 -0500
+
+    Wrote an acceptance test maker (AcceptanceTestMaker.c++, compiled to AcceptanceTests, which
+
+commit 06e2712b4acbf7723954b6adcc55bacfe7223b40
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Sun Jun 15 22:17:58 2014 -0500
+
+    Wrote an acceptance test maker (AcceptanceTestMaker.c++, compiled to AcceptanceTests, which
+
+commit fcc062ed87136d91199e366318f05d97f59ec305
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Fri Jun 13 17:31:20 2014 -0500
+
+    Implemented a swap function for the corner cases in collatz_eval
+
+commit b1071a472ceb1d327ddd5f4e37a56d574b50a04f
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Fri Jun 13 17:08:49 2014 -0500
+
+    Implemented collatz_eval (pre-Sphere submission)
+
+commit 077803ec056d89b3e6b5351b5af796d54d38a56c
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Fri Jun 13 16:50:32 2014 -0500
+
+    Average of 3 unit tests per function have been implemented
+
+commit 2a5c1896b16ae16918cb1495445592d1a4020eb6
+Author: Carlos A. Rodriguez <car3564@utexas.edu>
+Date:   Fri Jun 13 15:26:24 2014 -0500
+
+    Copied over the skeleton code files from the class repo
+
+commit cc598155729af0bed145a58460e8fd209263bc6c
+Author: Carlos Andres Rodriguez <cyberthug@users.noreply.github.com>
+Date:   Fri Jun 13 14:53:50 2014 -0500
+
+    Updated the README to include all instructions
+    
+    All instructions copied over from the class website, specifying all 27 stories.
+
+commit f67027f5c37fd3834fcc645e4a09f46c4a8f7349
+Author: Carlos Andres Rodriguez <cyberthug@users.noreply.github.com>
+Date:   Fri Jun 13 14:30:36 2014 -0500
+
+    Initial commit
